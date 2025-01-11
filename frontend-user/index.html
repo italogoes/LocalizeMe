@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localizador</title>
+</head>
+<body>
+    <h1>Enviar localização</h1>
+    <button id="send-location">Enviar Localização</button>
+
+    <script>
+        document.getElementById("send-location").addEventListener("click", () => {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        console.log(`Lat: ${latitude}, Lng: ${longitude}`);
+                        
+                        // Enviar para o backend
+                        fetch("http://localhost:3000/location", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({ latitude, longitude }),
+                        })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data);
+                        })
+                        .catch((error) => {
+                            console.error("Erro ao enviar localização:", error);
+                        });
+                    },
+                    (error) => {
+                        console.error("Erro ao obter localização:", error);
+                    }
+                );
+            } else {
+                alert("Geolocalização não suportada no navegador.");
+            }
+        });
+    </script>
+</body>
+</html>
