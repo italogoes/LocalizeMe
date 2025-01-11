@@ -28,13 +28,16 @@
                         .then((response) => response.json())
                         .then((data) => {
                             console.log(data);
+                            alert('Dados enviados com sucesso!')
                         })
                         .catch((error) => {
                             console.error("Erro ao enviar localização:", error);
+                            alert('Erro ao enviar localizacao!')
                         });
                     },
                     (error) => {
                         console.error("Erro ao obter localização:", error);
+                        alert('Erro ao obter localizacao!')
                     }
                 );
             } else {
