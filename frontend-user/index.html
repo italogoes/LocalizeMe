@@ -18,7 +18,7 @@
                         console.log(`Lat: ${latitude}, Lng: ${longitude}`);
                         
                         // Enviar para o backend
-                        fetch("http://192.168.0.117:3000/location", {
+                        fetch("http://localhost:3000/location", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
