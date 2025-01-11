@@ -29,7 +29,7 @@ export default function MapComponent() {
         });
 
         async function fetchCoordinates() {
-            const url: string = "http://localhost:3000/location"
+            const url: string = "https://localizeme.onrender.com/location"
 
             try {
                 const response = await fetch(url)

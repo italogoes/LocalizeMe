@@ -18,7 +18,7 @@
                         console.log(`Lat: ${latitude}, Lng: ${longitude}`);
                         
                         // Enviar para o backend
-                        fetch("http://localhost:3000/location", {
+                        fetch("https://localizeme.onrender.com/location", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
